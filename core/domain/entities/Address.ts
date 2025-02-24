@@ -3,6 +3,7 @@ type AddressProps = {
   neighborhood: string;
   city: string;
   state: string;
+  country: string;
   postalCode: string;
 };
 import type { IPrototype } from "../../interfaces/Prototype.ts";
@@ -19,6 +20,9 @@ export class Address extends Entity<AddressProps> implements IPrototype {
   }
   get state(): string {
     return this.props.state;
+  }
+  get country(): string {
+    return this.props.country;
   }
   get postalCode(): string {
     return this.props.postalCode;
