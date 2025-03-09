@@ -9,7 +9,7 @@ type ClientProps = {
   birthDate: Date;
   registrationDate: Date;
   cellphones: Cellphone[];
-  address: Address;
+  address?: Address;
   documents: Document[];
   dependents: Client[];
   guardian?: Client;
