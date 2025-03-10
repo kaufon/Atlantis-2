@@ -6,16 +6,29 @@ type DocumentProps = {
   type: documentType;
   expeditionDate: Date;
 };
+
 export class Document extends Entity<DocumentProps> {
   get number(): string {
     return this.props.number;
   }
+  set number(value: string) {
+    this.props.number = value;
+  }
+
   get type(): documentType {
     return this.props.type;
   }
+  set type(value: documentType) {
+    this.props.type = value;
+  }
+
   get expeditionDate(): Date {
     return this.props.expeditionDate;
   }
+  set expeditionDate(value: Date) {
+    this.props.expeditionDate = value;
+  }
+
   get formattedNumber(): string {
     switch (this.type) {
       case documentType.RG:
@@ -29,3 +42,4 @@ export class Document extends Entity<DocumentProps> {
     }
   }
 }
+
