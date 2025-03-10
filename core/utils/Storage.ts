@@ -12,7 +12,7 @@ export class Storage {
     return Storage.singleton;
   }
 
-  public get client() {
+  public get getClients() {
     return this.clients;
   }
 
@@ -27,7 +27,7 @@ export class Storage {
   }
 
   deleteClient(client: Client) {
-    this.clients = this.client.filter(
+    this.clients = this.clients.filter(
       (currentClient) => !currentClient.isEqualTo(client),
     );
   }
