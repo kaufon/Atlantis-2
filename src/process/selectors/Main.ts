@@ -4,6 +4,7 @@ import { TypeRegisterClientProcess } from "./TypeRegisterClient";
 import { TypeListClientProcess } from "./TypeListClient";
 import { TypeDeleteClientMenu } from "@/menus/TypeDeleteClientMenu";
 import { TypeDeleteClientProcess } from "./TypeDeleteClient";
+import { TypeEditClientProcess } from "./TypeEditClient";
 
 export class MainProcess extends Process {
   constructor() {
@@ -23,6 +24,7 @@ export class MainProcess extends Process {
           this.process = new TypeListClientProcess();
           break;
         case "edit-customer":
+          this.process = new TypeEditClientProcess();
           break;
         case "remove-customer":
           this.process = new TypeDeleteClientProcess();
