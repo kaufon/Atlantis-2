@@ -7,4 +7,7 @@ export abstract class Entity<Props> {
     currentId++;
     this.props = props;
   }
+  isEqualTo(entity: Entity<Props>): boolean {
+    return this.id === entity.id;
+  }
 }

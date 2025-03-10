@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx ./src/app.ts",
-    "test": "tsx ./src/teste.ts"
+    "dev": "tsx ./src/main.ts"
   },
   "author": "",
   "license": "ISC",

@@ -2,6 +2,7 @@ import type { Document } from "./Document";
 import type { Address } from "./Address";
 import type { Cellphone } from "./Cellphone";
 import { Entity } from "../abstracts";
+import { documentType } from "core/enums";
 
 type ClientProps = {
   name: string;
@@ -9,7 +10,7 @@ type ClientProps = {
   birthDate: Date;
   registrationDate: Date;
   cellphones: Cellphone[];
-  address: Address;
+  address?: Address;
   documents: Document[];
   dependents: Client[];
   guardian?: Client;
@@ -52,6 +53,7 @@ export class Client extends Entity<ClientProps> {
   }
 
   get address(): Address {
+    if (!this.props.address) throw new Error("Sem endereço");
     return this.props.address;
   }
   set address(value: Address) {
@@ -145,5 +147,45 @@ export class Client extends Entity<ClientProps> {
   public setDependents(value: Client[]): this {
     this.dependents = value;
     return this;
+  }
+  hasDependent(dependent: Client): boolean {
+    return this.dependents.some((currentDependent) =>
+      currentDependent.isEqualTo(dependent),
+    );
+  }
+  hasCellphone(cellphoneNumber: string): boolean {
+    return this.props.cellphones.some(
+      (currentCellphone) => currentCellphone.number === cellphoneNumber,
+    );
+  }
+  removeCellphone(cellphone: Cellphone): void {
+    this.props.cellphones = this.props.cellphones.filter(
+      (currentcellphone) => currentcellphone.number !== cellphone.number,
+    );
+  }
+  removeDocument(document: Document): void {
+    this.props.documents = this.props.documents.filter(
+      (currentDocument) => currentDocument.number !== document.number,
+    );
+  }
+  hasCpf(): boolean {
+    return this.props.documents.some(
+      (document) => document.type === documentType.CPF,
+    );
+  }
+
+  hasRg(): boolean {
+    return this.props.documents.some(
+      (document) => document.type === documentType.RG,
+    );
+  }
+
+  hasPassport(): boolean {
+    return this.props.documents.some(
+      (document) => document.type === documentType.Passaporte,
+    );
+  }
+  addCellphone(cellphone: Cellphone): void {
+    this.props.cellphones.push(cellphone);
   }
 }
