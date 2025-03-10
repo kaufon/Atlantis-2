@@ -1,6 +1,7 @@
 import { TypeRegisterClientMenu } from "@/menus";
 import { Process } from "@core";
 import RegisterGuardianClient from "../register/RegisterGuardianClient";
+import RegisterDependentClient from "../register/RegisterDependentClient";
 
 export class TypeRegisterClientProcess extends Process {
   constructor() {
@@ -14,6 +15,8 @@ export class TypeRegisterClientProcess extends Process {
         this.process = new RegisterGuardianClient();
         break;
       case "dependent":
+        this.process = new RegisterDependentClient();
+        this.process;
         break;
       case "back":
         this.execution = false;
