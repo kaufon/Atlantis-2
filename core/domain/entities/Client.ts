@@ -51,7 +51,7 @@ export class Client extends Entity<ClientProps> {
     this.props.cellphones = value;
   }
 
-  get address(): Address {
+  get address(): Address | undefined {
     return this.props.address;
   }
   set address(value: Address) {
@@ -145,5 +145,10 @@ export class Client extends Entity<ClientProps> {
   public setDependents(value: Client[]): this {
     this.dependents = value;
     return this;
+  }
+  hasDependent(dependent: Client): boolean {
+    return this.dependents.some((currentDependent) =>
+      currentDependent.isEqualTo(dependent),
+    );
   }
 }

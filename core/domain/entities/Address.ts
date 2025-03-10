@@ -7,7 +7,7 @@ type AddressProps = {
   postalCode: string;
 };
 import type { IPrototype } from "../../interfaces/Prototype.ts";
-import { Entity } from "../index.ts";
+import { Entity } from "../index";
 export class Address extends Entity<AddressProps> implements IPrototype {
   get street(): string {
     return this.props.street;
@@ -26,6 +26,9 @@ export class Address extends Entity<AddressProps> implements IPrototype {
   }
   get postalCode(): string {
     return this.props.postalCode;
+  }
+  get formattedValue(): string {
+    return `${this.street}, ${this.neighborhood}, ${this.city}, ${this.state} - ${this.postalCode}. ${this.country.toUpperCase()}`;
   }
   public clone(): IPrototype {
     return new Address(this.props);
