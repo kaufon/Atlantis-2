@@ -1,6 +1,9 @@
 import { Process } from "@core";
 import { MainMenu, TypeRegisterClientMenu } from "@/menus";
 import { TypeRegisterClientProcess } from "./TypeRegisterClient";
+import { TypeListClientProcess } from "./TypeListClient";
+import { TypeDeleteClientMenu } from "@/menus/TypeDeleteClientMenu";
+import { TypeDeleteClientProcess } from "./TypeDeleteClient";
 
 export class MainProcess extends Process {
   constructor() {
@@ -17,15 +20,17 @@ export class MainProcess extends Process {
           this.process = new TypeRegisterClientProcess();
           break;
         case "list-customers":
+          this.process = new TypeListClientProcess();
           break;
         case "edit-customer":
           break;
         case "remove-customer":
+          this.process = new TypeDeleteClientProcess();
           break;
         case "exit":
           console.log("Obrigado por usar!");
           this.execution = false;
-          return
+          return;
         default:
           console.log("Nao entendi");
           break;

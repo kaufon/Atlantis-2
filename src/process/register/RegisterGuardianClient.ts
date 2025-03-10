@@ -32,9 +32,7 @@ export default class RegisterGuardianClient extends Process {
     await this.process.execute();
 
     const storage = Storage.getInstance();
-    storage.client.push(client);
-    console.log(storage);
-
+    storage.addClient(client);
     console.log("Finalizando o cadastro do cliente...");
   }
 }
